@@ -26,6 +26,9 @@
 		229818A129361A080077542F /* CurrencySymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229818A029361A080077542F /* CurrencySymbols.swift */; };
 		229818A429361A0F0077542F /* CurrencyConversionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229818A329361A0F0077542F /* CurrencyConversionViewModel.swift */; };
 		229818A729361C1B0077542F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229818A629361C1B0077542F /* AppCoordinator.swift */; };
+		22C25C8F2936BBCA00DBF8AB /* MockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C25C8E2936BBCA00DBF8AB /* MockAPIManager.swift */; };
+		22C25C912936BBE300DBF8AB /* MockCurrencyConversionEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C25C902936BBE300DBF8AB /* MockCurrencyConversionEndpoint.swift */; };
+		22C25C932936BBFD00DBF8AB /* MockConversionData.json in Resources */ = {isa = PBXBuildFile; fileRef = 22C25C922936BBFD00DBF8AB /* MockConversionData.json */; };
 		7D36C3734485A14F5D2EC170 /* Pods_Currency_Converter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1A65FEBA7C39F6D6AE607C /* Pods_Currency_Converter.framework */; };
 		FF7D266302C7360A3285CCCA /* Pods_Currency_Converter_Currency_ConverterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B9BD41FDD509AEF2C30D8F /* Pods_Currency_Converter_Currency_ConverterUITests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +73,9 @@
 		229818A029361A080077542F /* CurrencySymbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencySymbols.swift; sourceTree = "<group>"; };
 		229818A329361A0F0077542F /* CurrencyConversionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyConversionViewModel.swift; sourceTree = "<group>"; };
 		229818A629361C1B0077542F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		22C25C8E2936BBCA00DBF8AB /* MockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIManager.swift; sourceTree = "<group>"; };
+		22C25C902936BBE300DBF8AB /* MockCurrencyConversionEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyConversionEndpoint.swift; sourceTree = "<group>"; };
+		22C25C922936BBFD00DBF8AB /* MockConversionData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockConversionData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		3301389424134A234795BACE /* Pods-Currency Converter-Currency ConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency Converter-Currency ConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-Currency Converter-Currency ConverterUITests/Pods-Currency Converter-Currency ConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		461A2B7E6AB95F804EE88DF1 /* Pods_Currency_ConverterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Currency_ConverterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C07D18D1C993E0FCA923672 /* Pods-Currency Converter-Currency ConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency Converter-Currency ConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-Currency Converter-Currency ConverterUITests/Pods-Currency Converter-Currency ConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 		229818942936199F0077542F /* Network Layer */ = {
 			isa = PBXGroup;
 			children = (
+				22C25C8D2936BBBD00DBF8AB /* Mocks */,
 				229818952936199F0077542F /* APIError.swift */,
 				229818962936199F0077542F /* NetworkManager.swift */,
 				229818972936199F0077542F /* NetworkEndpointProtocol.swift */,
@@ -217,6 +224,16 @@
 				22981866293619790077542F /* SceneDelegate.swift */,
 			);
 			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		22C25C8D2936BBBD00DBF8AB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				22C25C8E2936BBCA00DBF8AB /* MockAPIManager.swift */,
+				22C25C902936BBE300DBF8AB /* MockCurrencyConversionEndpoint.swift */,
+				22C25C922936BBFD00DBF8AB /* MockConversionData.json */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		9288F279861C9BF21DD3D12C /* Frameworks */ = {
@@ -352,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				229818712936197B0077542F /* LaunchScreen.storyboard in Resources */,
+				22C25C932936BBFD00DBF8AB /* MockConversionData.json in Resources */,
 				2298186E2936197B0077542F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,7 +498,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C25C8F2936BBCA00DBF8AB /* MockAPIManager.swift in Sources */,
 				229818A729361C1B0077542F /* AppCoordinator.swift in Sources */,
+				22C25C912936BBE300DBF8AB /* MockCurrencyConversionEndpoint.swift in Sources */,
 				227375FE29367F96007C47A6 /* ConvertedCurrency.swift in Sources */,
 				22981869293619790077542F /* CurrencyConversionViewController.swift in Sources */,
 				2298189A2936199F0077542F /* APIError.swift in Sources */,

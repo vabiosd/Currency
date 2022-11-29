@@ -1,0 +1,13 @@
+{
+    "info": {
+      "rate": 0.864394,
+    },
+    "query": {
+      "amount": 1000,
+      "from": "EUR",
+      "to": "GBP"
+    },
+    "result": 864.394,
+    "success": true
+    }
+}

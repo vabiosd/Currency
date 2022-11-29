@@ -11,3 +11,6 @@ A few things to note:
 6. UI is build programmatically using autolayout app scales well to different devices and orientations
 
 Please find a video of the app in action: https://drive.google.com/file/d/1Owk90egNR7GwOCTic_qRUtUquXqWrL3Y/view?usp=share_link
+
+
+NOTE: The fixer API key has limited number of requests allowed in free sunbcription, so the requests might stop working after a few tries

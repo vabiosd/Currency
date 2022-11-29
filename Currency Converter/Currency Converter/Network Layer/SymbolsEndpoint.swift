@@ -7,6 +7,7 @@
 
 import Foundation
 
-class SymbolsEndpoint: NetworkEndpointProtocol {
-    var path: String = "/symbols"
+/// Endpoint to fetch available currencies
+final class SymbolsEndpoint: NetworkEndpointProtocol {
+    var path: String = "/fixer/symbols"
 }

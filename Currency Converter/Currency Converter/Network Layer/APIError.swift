@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Different error cases while interacting with the APIs
 enum APIError: String, Error {
     case badRequest = "Ah something seems broken, please try again later!"
     case networkError = "Your device seems offline!"

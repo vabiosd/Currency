@@ -7,15 +7,16 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 /// A protocol used to fetch data from the network, we can easily mock this to fetch data from a local file for unit testing networking!
 protocol APIManagerProtocol {
     func getData(fromEndpoint endpoint: NetworkEndpointProtocol) -> Observable<Result<Data, APIError>>
 }
 
-class APIManager: APIManagerProtocol {
+final class APIManager: APIManagerProtocol {
     func getData(fromEndpoint endpoint: NetworkEndpointProtocol) -> Observable<Result<Data, APIError>> {
-        return Observable.create{ observer in
+        return Observable.create { observer in
             guard let urlRequest = endpoint.getNetworkRequest() else {
                 observer.onNext(.failure(.badRequest))
                 observer.onCompleted()
@@ -28,7 +29,7 @@ class APIManager: APIManagerProtocol {
                     observer.onCompleted()
                 } else if let httpResponse = response as? HTTPURLResponse, !(200..<300 ~= httpResponse.statusCode) {
                     /// checking if the httpResponse is in successful range
-                    observer.onNext(.failure(.badResponse))
+                    observer.onNext(.failure(.badRequest))
                     observer.onCompleted()
                 } else if let data = data {
                     /// unwrapping data object if available

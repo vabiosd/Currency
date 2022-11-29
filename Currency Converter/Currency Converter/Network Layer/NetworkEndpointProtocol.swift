@@ -16,6 +16,7 @@ enum RequestType: String {
 enum HttpHeaderField: String {
     case contentType = "Content-Type"
     case acceptType = "Accept"
+    case apiKey = "apikey"
 }
 
 /// A generic network endpoint protocol that can be used to build network requests to any possible endpoint!
@@ -44,17 +45,22 @@ extension NetworkEndpointProtocol {
     /// We will just need to define the properties the URL request needs, we can skip the rest!
     
     var host: String {
-        return "data.fixer.io/api"
+        return "api.apilayer.com"
+    }
+    
+    /// Since all endpoint require an access key, providing it as default for all request
+    /// Note in a real app we would save the access key in Keychain and we might have to refresh it
+    var accessKey: String {
+        return "Ef1j4YBXDx9ABI8x0HxjK2iaB9zOLXjL"
     }
     
     var headers: [String: String] {
         return [:]
     }
     
-    /// Since all endpoint require an access key, providing it as default for all request
-    /// Note in a real app we would save the access key in Keychain and we might have to refresh it
+    
     var urlParams: [String :String?] {
-        return ["access_key":"2He9JyPZ2XjT0wsYC03Cshj9aScsdjNu"]
+        return [:]
     }
     
     var bodyParams: [String: Any] {
@@ -71,8 +77,10 @@ extension NetworkEndpointProtocol {
         comps.scheme = "https"
         comps.host = host
         comps.path = path
-        comps.queryItems = urlParams.map{ URLQueryItem(name: $0, value: $1) }
-        
+        if !urlParams.isEmpty {
+            comps.queryItems = urlParams.map{ URLQueryItem(name: $0, value: $1) }
+        }
+       
         guard let url = comps.url else {
             return nil
         }
@@ -90,6 +98,8 @@ extension NetworkEndpointProtocol {
         
         request.setValue("application/json", forHTTPHeaderField: HttpHeaderField.contentType.rawValue)
         request.setValue("application/json", forHTTPHeaderField: HttpHeaderField.acceptType.rawValue)
+        request.setValue(accessKey, forHTTPHeaderField: HttpHeaderField.apiKey.rawValue)
+        
         return request
     }
 }

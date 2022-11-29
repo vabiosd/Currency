@@ -9,7 +9,7 @@ import Foundation
 
 /// Endpoint to get a value converted from one currency to another
 final class CurrencyConversionEndpoint: NetworkEndpointProtocol {
-    var path: String = "/fixer/ceonvert"
+    var path: String = "/fixer/convert"
     
     let toCurrency: String
     let fromCurrency: String

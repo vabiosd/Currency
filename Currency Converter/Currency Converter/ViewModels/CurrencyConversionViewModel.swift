@@ -66,17 +66,22 @@ final class CurrencyConversionViewModel {
             return CurrencyConversionEndpoint(toCurrency: conversionCurrency, fromCurrency: baseCurrency, amount: amount)
         }
                                                    .flatMap { endpoint -> Observable<Result<ConvertedCurrency,APIError>> in
+                                                       if endpoint.fromCurrency.isEmpty || endpoint.toCurrency.isEmpty || endpoint.amount.isEmpty {
+                                                           return Observable.of(.success(ConvertedCurrency(result: 0.0)))
+                                                       }
                                                        self.stateRelay.accept(.loading)
                                                        return self.networkManager.getDataModels(endpoint: endpoint)
                                                    }.flatMap{ (result: Result<ConvertedCurrency,APIError>) -> Observable<String> in
                                                        switch result {
                                                        case .success(let convertedAmount):
                                                            self.stateRelay.accept(.loaded)
-                                                           return Observable.of("\(convertedAmount.result)")
+                                                           return convertedAmount.result == 0.0 ? Observable.of("") : Observable.of("\(convertedAmount.result)")
                                                        case .failure(let error):
                                                            self.stateRelay.accept(.errorDoingConversion(error.rawValue))
-                                                           return Observable.empty()
+                                                           return Observable.of("")
                                                        }
                                                    }
+        
+        
     }
 }

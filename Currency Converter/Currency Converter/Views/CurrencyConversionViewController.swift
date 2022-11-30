@@ -121,9 +121,21 @@ final class CurrencyConversionViewController: UIViewController {
 
     private func setupViewModel() {
         /// Initialising viewModel with UIInputs from the textfield, these include to, from currencies and the amount
-        let uiInputs = CurrencyConversionViewModel.UIInputs(baseCurrency: fromTextfield.rx.text.orEmpty.distinctUntilChanged().asDriver(onErrorJustReturn: "").filter{ !$0.isEmpty },
-                                                            conversionCurrency: toTextfield.rx.text.orEmpty.distinctUntilChanged().asDriver(onErrorJustReturn: "").filter{ !$0.isEmpty },
-                                                            amount: baseAmountTextfield.rx.text.orEmpty.distinctUntilChanged().asDriver(onErrorJustReturn: "").filter{ !$0.isEmpty })
+        let uiInputs = CurrencyConversionViewModel.UIInputs(baseCurrency: fromTextfield.rx.text
+                                                                .orEmpty
+                                                                .distinctUntilChanged()
+                                                                .asDriver(onErrorJustReturn: "")
+                                                                .debounce(RxTimeInterval.milliseconds(500)),
+                                                            conversionCurrency: toTextfield.rx.text
+                                                                .orEmpty
+                                                                .distinctUntilChanged()
+                                                                .asDriver(onErrorJustReturn: "")
+                                                                .debounce(RxTimeInterval.milliseconds(500)),
+                                                            amount: baseAmountTextfield.rx.text
+                                                                .orEmpty
+                                                                .distinctUntilChanged()
+                                                                .asDriver(onErrorJustReturn: "")
+                                                                .debounce(RxTimeInterval.milliseconds(500)))
         let viewModel = viewModelFactory(uiInputs)
         bindViewModel(viewModel: viewModel)
     }

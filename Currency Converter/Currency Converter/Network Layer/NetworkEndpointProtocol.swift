@@ -51,7 +51,7 @@ extension NetworkEndpointProtocol {
     /// Since all endpoint require an access key, providing it as default for all request
     /// Note in a real app we would save the access key in Keychain and we might have to refresh it
     var accessKey: String {
-        return "Ef1j4YBXDx9ABI8x0HxjK2iaB9zOLXjL"
+        return "GZs3WCSoHVVO1hoSF5HdeBgYSOMWpFK8"
     }
     
     var headers: [String: String] {

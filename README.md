@@ -13,4 +13,7 @@ A few things to note:
 Please find a video of the app in action: https://drive.google.com/file/d/1Owk90egNR7GwOCTic_qRUtUquXqWrL3Y/view?usp=share_link
 
 
-NOTE: The fixer API key has limited number of requests allowed in free sunbcription, so the requests might stop working after a few tries
+NOTE: 
+1. The fixer API key has limited number of requests allowed in free subscription, so the requests might stop working after a few tries (100 API calls).
+2. Currently all currencies are displayed which includes cryptocurrencies, in a real app it might make more sense to fetch only certain currencies and display to the user
+
